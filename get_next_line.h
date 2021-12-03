@@ -1,11 +1,14 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdio.h>
-# include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
+
+typedef struct s_gnl
+{
+	char	*new_line;
+	char	*end_line;
+}	t_gnl;
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
@@ -15,15 +18,8 @@ char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_build_line(char *str1, char *str2, char *end_line);
 
-typedef struct s_gnl
-{
-	char	*new_line;
-	char	*end_line;
-	char	*remaining_str;
-}	t_gnl;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-#endif
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
 #endif
