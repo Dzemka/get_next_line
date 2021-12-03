@@ -39,7 +39,7 @@ char	*ft_strchr(const char *s, int c)
 	char	*p;
 	int		i;
 
-	if(!s)
+	if (!s)
 		return (NULL);
 	i = 0;
 	p = (char *)s;

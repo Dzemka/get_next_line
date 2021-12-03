@@ -51,10 +51,10 @@ static char	*ft_get_remaining(t_gnl *gnl, char *remaining_str)
 	free (remaining_str);
 	return (temp_reamaining);
 }
-
+#include <stdio.h>
 static char	*ft_get_res(int fd, char *buf, t_gnl *gnl, t_list *elem)
 {
-	int	count_read;
+	ssize_t	count_read;
 
 	gnl->new_line = NULL;
 	gnl->end_line = NULL;

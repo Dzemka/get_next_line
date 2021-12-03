@@ -18,8 +18,8 @@ static char	*ft_get_remaining(t_gnl *gnl, char *remaining_str)
 
 static char	*ft_get_res(int fd, char *buf, t_gnl *gnl)
 {
-	int			count_read;
-	static char	*remaining_str;
+	ssize_t			count_read;
+	static char		*remaining_str;
 
 	gnl->new_line = NULL;
 	gnl->end_line = NULL;
