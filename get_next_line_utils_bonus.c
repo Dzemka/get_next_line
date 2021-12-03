@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t ft_strlen(const char *s)
 {
@@ -9,7 +9,6 @@ size_t ft_strlen(const char *s)
         len++;
     return (len);
 }
-
 
 char    *ft_strdup(const char *s1)
 {
@@ -68,7 +67,9 @@ char    *ft_build_line(char *str1, char *str2, char *end_line)
     if(!str1)
         str1 = ft_strdup("");
     len_new_str = ft_strlen(str1) + ft_strlen(str2) + 1;
-    new_str = malloc(len_new_str);  
+    new_str = malloc(len_new_str);
+    if(!new_str)
+        return(NULL);
     if (end_line)
         *(end_line) = '\0';
     while (str1[j] != '\0')
@@ -79,4 +80,18 @@ char    *ft_build_line(char *str1, char *str2, char *end_line)
     new_str[i] = '\0';
     free (str1);
     return (new_str);
+}
+
+t_list *ft_lst_new(int fd)
+{
+
+    t_list  *lst_new;
+
+    lst_new = (t_list *)malloc(sizeof(t_list));
+    if (!lst_new)
+        return (NULL);
+    lst_new->fd = fd;
+    lst_new->remaining_str = NULL;
+    lst_new->next = NULL;
+    return (lst_new);
 }

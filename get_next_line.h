@@ -15,11 +15,15 @@ char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_build_line(char *str1, char *str2, char *end_line);
 
-// # define BUFFER_SIZE 4		
 typedef struct s_gnl
 {
 	char	*new_line;
 	char	*end_line;
 	char	*remaining_str;
 }	t_gnl;
+
+#endif
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 42
 #endif

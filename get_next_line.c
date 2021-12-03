@@ -18,9 +18,6 @@ static char	*ft_get_res(int fd, char *buf, t_gnl *gnl)
 	int			count_read;
 	static char	*remaining_str;
 
-	gnl->new_line = NULL;
-	gnl->end_line = NULL;
-	gnl->remaining_str = NULL;
 	remaining_str = ft_get_remaining(gnl, remaining_str);
 	while (!gnl->end_line)
 	{
@@ -45,53 +42,21 @@ char	*get_next_line(int fd)
 	char	*buf;
 	char	*res;
 
+	res = NULL;
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (NULL);
 	gnl = (t_gnl *)malloc(sizeof(t_gnl) * (BUFFER_SIZE + 1));
-	res = NULL;
 	if (gnl)
 	{
+		gnl->new_line = NULL;
+		gnl->end_line = NULL;
+		gnl->remaining_str = NULL;
 		res = ft_get_res(fd, buf, gnl);
 		free (gnl);
 	}
 	free (buf);
 	return (res);
 }
-// int main()
-// {
-// 	int		fd;
-// 	int		i;
-// 	char	*res;
-// 	i = 1;
-// 	while (i <= 5)
-// 	{
-// 		fd = open("text.txt", O_RDONLY);
-// 		res = get_next_line(fd);
-// 		printf(".%d-%s", i, res);
-// 		i++;
-// 	}
-// 	while (i <= 10)
-// 	{
-// 		fd = open("seleco.txt", O_RDONLY);
-// 		res = get_next_line(fd);
-// 		printf(".%d-%s", i, res);
-// 		i++;
-// 	}
-// 	while (i <= 15)
-// 	{
-// 		fd = open("text.txt", O_RDONLY);
-// 		res = get_next_line(fd);
-// 		printf(".%d-%s", i, res);
-// 		i++;
-// 	}
-// 	while (i <= 20)
-// 	{
-// 		fd = open("seleco.txt", O_RDONLY);
-// 		res = get_next_line(fd);
-// 		printf(".%d-%s", i, res);
-// 		i++;
-// 	}
-// }
